@@ -38,7 +38,7 @@
 			// 
 			// btnOK
 			// 
-			btnOK.Location = new Point(198, 345);
+			btnOK.Location = new Point(205, 310);
 			btnOK.Name = "btnOK";
 			btnOK.Size = new Size(75, 23);
 			btnOK.TabIndex = 0;
@@ -48,7 +48,7 @@
 			// 
 			// btnCancel
 			// 
-			btnCancel.Location = new Point(302, 344);
+			btnCancel.Location = new Point(309, 309);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(75, 23);
 			btnCancel.TabIndex = 1;
@@ -62,13 +62,14 @@
 			gridUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			gridUsers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
 			gridUsers.EditMode = DataGridViewEditMode.EditProgrammatically;
-			gridUsers.Location = new Point(112, 40);
+			gridUsers.Location = new Point(12, 12);
 			gridUsers.MultiSelect = false;
 			gridUsers.Name = "gridUsers";
 			gridUsers.RowHeadersVisible = false;
 			gridUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			gridUsers.Size = new Size(467, 277);
+			gridUsers.Size = new Size(431, 277);
 			gridUsers.TabIndex = 2;
+			gridUsers.CellDoubleClick += gridUsers_CellDoubleClick;
 			// 
 			// Column1
 			// 
@@ -92,7 +93,7 @@
 			// 
 			// btnAdd
 			// 
-			btnAdd.Location = new Point(18, 63);
+			btnAdd.Location = new Point(469, 58);
 			btnAdd.Name = "btnAdd";
 			btnAdd.Size = new Size(75, 23);
 			btnAdd.TabIndex = 3;
@@ -102,16 +103,17 @@
 			// 
 			// btnEdit
 			// 
-			btnEdit.Location = new Point(14, 107);
+			btnEdit.Location = new Point(465, 102);
 			btnEdit.Name = "btnEdit";
 			btnEdit.Size = new Size(75, 23);
 			btnEdit.TabIndex = 4;
 			btnEdit.Text = "Edit...";
 			btnEdit.UseVisualStyleBackColor = true;
+			btnEdit.Click += btnEdit_Click;
 			// 
 			// btnDel
 			// 
-			btnDel.Location = new Point(15, 211);
+			btnDel.Location = new Point(466, 206);
 			btnDel.Name = "btnDel";
 			btnDel.Size = new Size(75, 23);
 			btnDel.TabIndex = 5;
@@ -124,14 +126,19 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(552, 349);
 			Controls.Add(btnDel);
 			Controls.Add(btnEdit);
 			Controls.Add(btnAdd);
 			Controls.Add(gridUsers);
 			Controls.Add(btnCancel);
 			Controls.Add(btnOK);
+			FormBorderStyle = FormBorderStyle.Fixed3D;
+			MaximizeBox = false;
+			MinimizeBox = false;
 			Name = "dlgUsers";
+			ShowInTaskbar = false;
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Users";
 			((System.ComponentModel.ISupportInitialize)gridUsers).EndInit();
 			ResumeLayout(false);

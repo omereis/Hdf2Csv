@@ -51,6 +51,7 @@ namespace Hdf2Csv {
 				gridUsers.Rows[nRow].Cells[0].Value = user.GetFullName();
 				gridUsers.Rows[nRow].Cells[1].Value = user.Phone;
 				gridUsers.Rows[nRow].Cells[2].Value = user.Email;
+				gridUsers.Rows[nRow].Cells[3].Value = user.IsActive;
 				gridUsers.Rows[nRow].Cells[0].Tag = user;
 			}
 		}
@@ -58,32 +59,43 @@ namespace Hdf2Csv {
 		private void btnAdd_Click(object sender, EventArgs e) {
 			TUserInfo user = new TUserInfo();
 
-			if (user.InsertAsNew (m_cmd, ref m_strErr)) {
+			if(user.InsertAsNew(m_cmd, ref m_strErr)) {
 				int nRow = gridUsers.Rows.Add();
-				SetUserRow (nRow, user);
-				if (!EditUserAtRow (nRow)) {
+				SetUserRow(nRow, user);
+				if(!EditUserAtRow(nRow)) {
 					gridUsers.Rows.RemoveAt(nRow);
-					user.DeleteFromDB (m_cmd, ref m_strErr);
+					user.DeleteFromDB(m_cmd, ref m_strErr);
 				}
 			}
 		}
 //-----------------------------------------------------------------------------
-		private bool EditUserAtRow (int nRow) {
+		private bool EditUserAtRow(int nRow) {
 			bool f = false;
 
-			if ((nRow >= 0) && (nRow < gridUsers.Rows.Count)) {
-				TUserInfo user = (TUserInfo) gridUsers.Rows[nRow].Cells[0].Tag;
+			if((nRow >= 0) && (nRow < gridUsers.Rows.Count)) {
+				TUserInfo user = (TUserInfo)gridUsers.Rows[nRow].Cells[0].Tag;
 				dlgEditUser dlg = new dlgEditUser();
-				if (dlg.Execute (user)) {
-					if (user.UpdateInDB (m_cmd, ref m_strErr)) {
-						SetUserRow (nRow, user);
+				if(dlg.Execute(user)) {
+					if(user.UpdateInDB(m_cmd, ref m_strErr)) {
+						SetUserRow(nRow, user);
 						f = true;
-					}
-					else
-						MessageBox.Show (m_strErr);
+					} else
+						MessageBox.Show(m_strErr);
 				}
 			}
 			return (f);
+		}
+//-----------------------------------------------------------------------------
+		private void EditUserAtRow () {
+			EditUserAtRow(gridUsers.CurrentRow.Index);
+		}
+//-----------------------------------------------------------------------------
+		private void btnEdit_Click(object sender, EventArgs e) {
+			EditUserAtRow ();
+		}
+//-----------------------------------------------------------------------------
+		private void gridUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+			EditUserAtRow ();
 		}
 	}
 }

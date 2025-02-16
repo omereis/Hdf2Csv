@@ -41,24 +41,25 @@
 			txtPhone = new TextBox();
 			pictureBox1 = new PictureBox();
 			btnTestUser = new Button();
+			cboxActive = new CheckBox();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
 			// 
 			// btnCancel
 			// 
-			btnCancel.Location = new Point(284, 300);
+			btnCancel.Location = new Point(194, 325);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(75, 23);
-			btnCancel.TabIndex = 3;
+			btnCancel.TabIndex = 8;
 			btnCancel.Text = "Cancel";
 			btnCancel.UseVisualStyleBackColor = true;
 			// 
 			// btnOK
 			// 
-			btnOK.Location = new Point(180, 301);
+			btnOK.Location = new Point(90, 326);
 			btnOK.Name = "btnOK";
 			btnOK.Size = new Size(75, 23);
-			btnOK.TabIndex = 2;
+			btnOK.TabIndex = 7;
 			btnOK.Text = "OK";
 			btnOK.UseVisualStyleBackColor = true;
 			btnOK.Click += btnOK_Click;
@@ -66,7 +67,7 @@
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Location = new Point(102, 20);
+			label1.Location = new Point(43, 18);
 			label1.Name = "label1";
 			label1.Size = new Size(44, 15);
 			label1.TabIndex = 4;
@@ -75,7 +76,7 @@
 			// label2
 			// 
 			label2.AutoSize = true;
-			label2.Location = new Point(82, 53);
+			label2.Location = new Point(23, 51);
 			label2.Name = "label2";
 			label2.Size = new Size(64, 15);
 			label2.TabIndex = 5;
@@ -84,7 +85,7 @@
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Location = new Point(79, 87);
+			label3.Location = new Point(20, 85);
 			label3.Name = "label3";
 			label3.Size = new Size(63, 15);
 			label3.TabIndex = 6;
@@ -93,7 +94,7 @@
 			// label4
 			// 
 			label4.AutoSize = true;
-			label4.Location = new Point(85, 197);
+			label4.Location = new Point(26, 195);
 			label4.Name = "label4";
 			label4.Size = new Size(60, 15);
 			label4.TabIndex = 7;
@@ -102,7 +103,7 @@
 			// label5
 			// 
 			label5.AutoSize = true;
-			label5.Location = new Point(85, 237);
+			label5.Location = new Point(26, 235);
 			label5.Name = "label5";
 			label5.Size = new Size(57, 15);
 			label5.TabIndex = 8;
@@ -111,7 +112,7 @@
 			// label6
 			// 
 			label6.AutoSize = true;
-			label6.Location = new Point(97, 125);
+			label6.Location = new Point(38, 123);
 			label6.Name = "label6";
 			label6.Size = new Size(41, 15);
 			label6.TabIndex = 9;
@@ -120,7 +121,7 @@
 			// label7
 			// 
 			label7.AutoSize = true;
-			label7.Location = new Point(102, 162);
+			label7.Location = new Point(43, 160);
 			label7.Name = "label7";
 			label7.Size = new Size(36, 15);
 			label7.TabIndex = 10;
@@ -128,7 +129,7 @@
 			// 
 			// txtID
 			// 
-			txtID.Location = new Point(157, 17);
+			txtID.Location = new Point(98, 15);
 			txtID.Name = "txtID";
 			txtID.ReadOnly = true;
 			txtID.Size = new Size(100, 23);
@@ -136,49 +137,49 @@
 			// 
 			// txtFirst
 			// 
-			txtFirst.Location = new Point(157, 50);
+			txtFirst.Location = new Point(98, 48);
 			txtFirst.Name = "txtFirst";
 			txtFirst.Size = new Size(157, 23);
-			txtFirst.TabIndex = 12;
+			txtFirst.TabIndex = 0;
 			// 
 			// txtLast
 			// 
-			txtLast.Location = new Point(157, 84);
+			txtLast.Location = new Point(98, 82);
 			txtLast.Name = "txtLast";
 			txtLast.Size = new Size(157, 23);
-			txtLast.TabIndex = 13;
+			txtLast.TabIndex = 1;
 			// 
 			// txtUsername
 			// 
-			txtUsername.Location = new Point(157, 197);
+			txtUsername.Location = new Point(98, 195);
 			txtUsername.Name = "txtUsername";
 			txtUsername.Size = new Size(157, 23);
-			txtUsername.TabIndex = 14;
+			txtUsername.TabIndex = 4;
 			// 
 			// txtPasswd
 			// 
-			txtPasswd.Location = new Point(157, 237);
+			txtPasswd.Location = new Point(98, 235);
 			txtPasswd.Name = "txtPasswd";
 			txtPasswd.Size = new Size(157, 23);
-			txtPasswd.TabIndex = 15;
+			txtPasswd.TabIndex = 6;
 			// 
 			// txtEmail
 			// 
-			txtEmail.Location = new Point(157, 162);
+			txtEmail.Location = new Point(98, 160);
 			txtEmail.Name = "txtEmail";
 			txtEmail.Size = new Size(157, 23);
-			txtEmail.TabIndex = 17;
+			txtEmail.TabIndex = 3;
 			// 
 			// txtPhone
 			// 
-			txtPhone.Location = new Point(157, 122);
+			txtPhone.Location = new Point(98, 120);
 			txtPhone.Name = "txtPhone";
 			txtPhone.Size = new Size(157, 23);
-			txtPhone.TabIndex = 16;
+			txtPhone.TabIndex = 2;
 			// 
 			// pictureBox1
 			// 
-			pictureBox1.Location = new Point(354, 38);
+			pictureBox1.Location = new Point(272, 36);
 			pictureBox1.Name = "pictureBox1";
 			pictureBox1.Size = new Size(179, 147);
 			pictureBox1.TabIndex = 18;
@@ -186,12 +187,22 @@
 			// 
 			// btnTestUser
 			// 
-			btnTestUser.Location = new Point(329, 197);
+			btnTestUser.Location = new Point(272, 195);
 			btnTestUser.Name = "btnTestUser";
 			btnTestUser.Size = new Size(75, 23);
-			btnTestUser.TabIndex = 19;
+			btnTestUser.TabIndex = 5;
 			btnTestUser.Text = "Test...";
 			btnTestUser.UseVisualStyleBackColor = true;
+			// 
+			// cboxActive
+			// 
+			cboxActive.AutoSize = true;
+			cboxActive.Location = new Point(100, 274);
+			cboxActive.Name = "cboxActive";
+			cboxActive.Size = new Size(59, 19);
+			cboxActive.TabIndex = 19;
+			cboxActive.Text = "Active";
+			cboxActive.UseVisualStyleBackColor = true;
 			// 
 			// dlgEditUser
 			// 
@@ -199,7 +210,8 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(571, 356);
+			ClientSize = new Size(468, 401);
+			Controls.Add(cboxActive);
 			Controls.Add(btnTestUser);
 			Controls.Add(pictureBox1);
 			Controls.Add(txtEmail);
@@ -249,5 +261,6 @@
 		private TextBox txtPhone;
 		private PictureBox pictureBox1;
 		private Button btnTestUser;
+		private CheckBox cboxActive;
 	}
 }

@@ -50,6 +50,8 @@
 			status_bar = new StatusStrip();
 			statusDB = new ToolStripStatusLabel();
 			btnConnect = new Button();
+			button1 = new Button();
+			textBox1 = new TextBox();
 			((System.ComponentModel.ISupportInitialize)gridFiles).BeginInit();
 			menuMain.SuspendLayout();
 			status_bar.SuspendLayout();
@@ -57,7 +59,7 @@
 			// 
 			// btnBrowse
 			// 
-			btnBrowse.Location = new Point(34, 27);
+			btnBrowse.Location = new Point(531, 193);
 			btnBrowse.Name = "btnBrowse";
 			btnBrowse.Size = new Size(75, 23);
 			btnBrowse.TabIndex = 0;
@@ -72,7 +74,7 @@
 			gridFiles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			gridFiles.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
 			gridFiles.EditMode = DataGridViewEditMode.EditProgrammatically;
-			gridFiles.Location = new Point(23, 130);
+			gridFiles.Location = new Point(12, 82);
 			gridFiles.MultiSelect = false;
 			gridFiles.Name = "gridFiles";
 			gridFiles.RowHeadersVisible = false;
@@ -102,7 +104,7 @@
 			// 
 			// btnParse
 			// 
-			btnParse.Location = new Point(115, 27);
+			btnParse.Location = new Point(642, 193);
 			btnParse.Name = "btnParse";
 			btnParse.Size = new Size(75, 23);
 			btnParse.TabIndex = 2;
@@ -181,6 +183,7 @@
 			miPatients.Name = "miPatients";
 			miPatients.Size = new Size(125, 22);
 			miPatients.Text = "&Patients...";
+			miPatients.Click += miPatients_Click;
 			// 
 			// popupHelp
 			// 
@@ -212,7 +215,7 @@
 			// 
 			// btnConnect
 			// 
-			btnConnect.Location = new Point(67, 66);
+			btnConnect.Location = new Point(531, 251);
 			btnConnect.Name = "btnConnect";
 			btnConnect.Size = new Size(75, 23);
 			btnConnect.TabIndex = 6;
@@ -220,11 +223,30 @@
 			btnConnect.UseVisualStyleBackColor = true;
 			btnConnect.Click += btnConnect_Click;
 			// 
+			// button1
+			// 
+			button1.Location = new Point(531, 43);
+			button1.Name = "button1";
+			button1.Size = new Size(75, 23);
+			button1.TabIndex = 7;
+			button1.Text = "button1";
+			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
+			// 
+			// textBox1
+			// 
+			textBox1.Location = new Point(517, 72);
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(100, 23);
+			textBox1.TabIndex = 8;
+			// 
 			// frmMain
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 450);
+			Controls.Add(textBox1);
+			Controls.Add(button1);
 			Controls.Add(btnConnect);
 			Controls.Add(status_bar);
 			Controls.Add(btnParse);
@@ -270,5 +292,7 @@
 		private StatusStrip status_bar;
 		private ToolStripStatusLabel statusDB;
 		private Button btnConnect;
+		private Button button1;
+		private TextBox textBox1;
 	}
 }

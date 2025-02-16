@@ -42,6 +42,7 @@ namespace Hdf2Csv {
 			txtEmail.Text = user.Email;
 			txtUsername.Text = user.Username;
 			txtPasswd.Text = user.Passwd;
+			cboxActive.Checked = user.IsActive;
 		}
 //-----------------------------------------------------------------------------
 		private void Upload (TUserInfo user) {
@@ -52,6 +53,7 @@ namespace Hdf2Csv {
 			user.Email = txtEmail.Text;
 			user.Username = txtUsername.Text;
 			user.Passwd = txtPasswd.Text;
+			user.IsActive = cboxActive.Checked;
 		}
 	}
 }

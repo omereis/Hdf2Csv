@@ -60,7 +60,7 @@ namespace Hdf2Csv
 		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
-			miUsers.Enabled = IsDatabaseConnected (m_database);
+			miUsers.Enabled = IsDatabaseConnected(m_database);
 		}
 		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
@@ -78,7 +78,7 @@ namespace Hdf2Csv
 		private void frmMain_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
 			m_strTitle = status_bar.Items[0].Text;
-			ConnectToDB ();
+			ConnectToDB();
 		}
 		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
 		private void frmMain_FormClosed(object sender, FormClosedEventArgs e) {
@@ -140,11 +140,21 @@ namespace Hdf2Csv
 		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
 		private void miUsers_Click(object sender, EventArgs e) {
 			dlgUsers users = new dlgUsers();
-			users.Execute (m_cmd);
+			users.Execute(m_cmd);
 		}
-
+		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
 		private void btnConnect_Click(object sender, EventArgs e) {
 			ConnectToDB();
+		}
+		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
+		private void miPatients_Click(object sender, EventArgs e) {
+			dlgEditPatients dlg = new dlgEditPatients();
+			dlg.Execute(m_cmd);
+		}
+
+		private void button1_Click(object sender, EventArgs e) {
+			string str = TPatientInfo.GetRandomPatientCode();	
+			textBox1.Text = str;
 		}
 		//-----------------------------------------------------------------------------//-----------------------------------------------------------------------------
 	}

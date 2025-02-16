@@ -23,6 +23,7 @@ namespace Hdf2Csv {
 		private string m_strPhone;
 		private string m_strUsername;
 		private string m_strPasswd;
+		private bool m_fIsActive;
 //-----------------------------------------------------------------------------
 		public int    UserID	{get{return (m_id);}set{m_id=value;}}
 		public string LastName	{get{return (m_strLast);}set{m_strLast=value;}}
@@ -31,6 +32,7 @@ namespace Hdf2Csv {
 		public string Phone		{get{return (m_strPhone);}set{m_strPhone=value;}}
 		public string Username	{get{return (m_strUsername);}set{m_strUsername=value;}}
 		public string Passwd	{get{return (m_strPasswd);}set{m_strPasswd=value;}}
+		public bool IsActive	{get{return(m_fIsActive);}set{m_fIsActive=value;}}
 //-----------------------------------------------------------------------------
 		public TUserInfo () {
 			Clear ();
@@ -48,6 +50,7 @@ namespace Hdf2Csv {
 			Phone		= "";
 			Username	= "";
 			Passwd		= "";
+			IsActive    = true;
 		}
 //-----------------------------------------------------------------------------
 		public void AssignAll (TUserInfo other) {
@@ -58,6 +61,7 @@ namespace Hdf2Csv {
 			Phone		= other.Phone;
 			Username	= other.Username;
 			Passwd		= other.Passwd;
+			IsActive    = other.IsActive;
 		}
 //-----------------------------------------------------------------------------
 		public string GetFullName() {
@@ -226,18 +230,13 @@ namespace Hdf2Csv {
 
 			try {
 				ArrayList al = new ArrayList ();
-				AddField (al, FldFirst, FirstName);
-				AddField (al, FldLast, LastName);
-				AddField (al, FldEmail, Email);
-				AddField (al, FldPhone, Phone);
-				AddField (al, FldUser, Username);
-				AddField (al, FldPasswd, Passwd);
-				string strSet = "";
-				for (int n=0 ; n < al.Count ; n++) {
-					strSet += (string) al[n];
-					if (n < al.Count - 1)
-						strSet += ",";
-				}
+				TMisc.AddUpdateField (al, FldFirst, FirstName);
+				TMisc.AddUpdateField (al, FldLast, LastName);
+				TMisc.AddUpdateField (al, FldEmail, Email);
+				TMisc.AddUpdateField (al, FldPhone, Phone);
+				TMisc.AddUpdateField (al, FldUser, Username);
+				TMisc.AddUpdateField (al, FldPasswd, Passwd);
+				string strSet = TMisc.GetSqlUpdateSet (al);
 				if (strSet.Length > 0) {
 					cmd.CommandText = String.Format ("update {0} set {1} where {2}={3};", Table, strSet, FldID, UserID);
 					cmd.ExecuteNonQuery ();
@@ -248,11 +247,6 @@ namespace Hdf2Csv {
 				strErr =ex.Message;
 			}
 			return (f);
-		}
-//-----------------------------------------------------------------------------
-		private void AddField (ArrayList al, string strField, string strValue) {
-			if (strValue.Trim().Length > 0);
-				al.Add (String.Format("{0}={1}", strField, TMisc.GetDBUpdateValue (strValue)));
 		}
 	}
 }
