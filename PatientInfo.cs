@@ -80,10 +80,6 @@ namespace Hdf2Csv {
 			return (strGender);
 	}
 //-----------------------------------------------------------------------------
-		public string FuglMeyerScale() {
-			return ("");
-		}
-//-----------------------------------------------------------------------------
 		public static bool LoadFromDB (MySqlCommand cmd, ref TPatientInfo[] aPatients, ref string strErr) {
 			ArrayList a = new ArrayList();
 			aPatients = null;

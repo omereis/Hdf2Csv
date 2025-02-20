@@ -1,5 +1,5 @@
 ﻿namespace Hdf2Csv {
-	partial class dlgEditPatients {
+	partial class dlgEditQuestionnaires {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -23,145 +23,137 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			btnCancel = new Button();
+			btnOK = new Button();
 			btnDel = new Button();
 			btnEdit = new Button();
 			btnAdd = new Button();
-			gridPatients = new DataGridView();
-			btnCancel = new Button();
-			btnOK = new Button();
+			gridQstneers = new DataGridView();
 			Column1 = new DataGridViewTextBoxColumn();
 			Column2 = new DataGridViewTextBoxColumn();
 			Column3 = new DataGridViewTextBoxColumn();
 			Column4 = new DataGridViewTextBoxColumn();
-			Column5 = new DataGridViewTextBoxColumn();
-			((System.ComponentModel.ISupportInitialize)gridPatients).BeginInit();
+			((System.ComponentModel.ISupportInitialize)gridQstneers).BeginInit();
 			SuspendLayout();
+			// 
+			// btnCancel
+			// 
+			btnCancel.Location = new Point(389, 334);
+			btnCancel.Name = "btnCancel";
+			btnCancel.Size = new Size(75, 23);
+			btnCancel.TabIndex = 9;
+			btnCancel.Text = "Cancel";
+			btnCancel.UseVisualStyleBackColor = true;
+			// 
+			// btnOK
+			// 
+			btnOK.Location = new Point(285, 335);
+			btnOK.Name = "btnOK";
+			btnOK.Size = new Size(75, 23);
+			btnOK.TabIndex = 8;
+			btnOK.Text = "OK";
+			btnOK.UseVisualStyleBackColor = true;
+			btnOK.Click += btnOK_Click;
 			// 
 			// btnDel
 			// 
-			btnDel.Location = new Point(9, 194);
+			btnDel.Location = new Point(13, 206);
 			btnDel.Name = "btnDel";
 			btnDel.Size = new Size(75, 23);
-			btnDel.TabIndex = 11;
+			btnDel.TabIndex = 15;
 			btnDel.Text = "Delete...";
 			btnDel.UseVisualStyleBackColor = true;
-			btnDel.Click += btnDel_Click;
 			// 
 			// btnEdit
 			// 
-			btnEdit.Location = new Point(8, 90);
+			btnEdit.Location = new Point(12, 102);
 			btnEdit.Name = "btnEdit";
 			btnEdit.Size = new Size(75, 23);
-			btnEdit.TabIndex = 10;
+			btnEdit.TabIndex = 14;
 			btnEdit.Text = "Edit...";
 			btnEdit.UseVisualStyleBackColor = true;
 			btnEdit.Click += btnEdit_Click;
 			// 
 			// btnAdd
 			// 
-			btnAdd.Location = new Point(8, 47);
+			btnAdd.Location = new Point(12, 59);
 			btnAdd.Name = "btnAdd";
 			btnAdd.Size = new Size(75, 23);
-			btnAdd.TabIndex = 9;
+			btnAdd.TabIndex = 13;
 			btnAdd.Text = "Add...";
 			btnAdd.UseVisualStyleBackColor = true;
 			btnAdd.Click += btnAdd_Click;
 			// 
-			// gridPatients
+			// gridQstneers
 			// 
-			gridPatients.AllowUserToAddRows = false;
-			gridPatients.AllowUserToDeleteRows = false;
-			gridPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			gridPatients.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-			gridPatients.EditMode = DataGridViewEditMode.EditProgrammatically;
-			gridPatients.Location = new Point(90, 12);
-			gridPatients.MultiSelect = false;
-			gridPatients.Name = "gridPatients";
-			gridPatients.RowHeadersVisible = false;
-			gridPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			gridPatients.Size = new Size(525, 277);
-			gridPatients.TabIndex = 8;
-			gridPatients.CellDoubleClick += gridPatients_CellDoubleClick;
-			// 
-			// btnCancel
-			// 
-			btnCancel.Location = new Point(407, 308);
-			btnCancel.Name = "btnCancel";
-			btnCancel.Size = new Size(75, 23);
-			btnCancel.TabIndex = 7;
-			btnCancel.Text = "Cancel";
-			btnCancel.UseVisualStyleBackColor = true;
-			// 
-			// btnOK
-			// 
-			btnOK.Location = new Point(303, 309);
-			btnOK.Name = "btnOK";
-			btnOK.Size = new Size(75, 23);
-			btnOK.TabIndex = 6;
-			btnOK.Text = "OK";
-			btnOK.UseVisualStyleBackColor = true;
-			btnOK.Click += btnOK_Click;
+			gridQstneers.AllowUserToAddRows = false;
+			gridQstneers.AllowUserToDeleteRows = false;
+			gridQstneers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			gridQstneers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+			gridQstneers.EditMode = DataGridViewEditMode.EditProgrammatically;
+			gridQstneers.Location = new Point(94, 24);
+			gridQstneers.MultiSelect = false;
+			gridQstneers.Name = "gridQstneers";
+			gridQstneers.RowHeadersVisible = false;
+			gridQstneers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			gridQstneers.Size = new Size(620, 277);
+			gridQstneers.TabIndex = 12;
 			// 
 			// Column1
 			// 
-			Column1.HeaderText = "Code";
+			Column1.HeaderText = "Name";
 			Column1.Name = "Column1";
 			// 
 			// Column2
 			// 
-			Column2.HeaderText = "Age";
+			Column2.HeaderText = "Description";
 			Column2.Name = "Column2";
+			Column2.Width = 300;
 			// 
 			// Column3
 			// 
-			Column3.HeaderText = "Gender";
+			Column3.HeaderText = "Creator";
 			Column3.Name = "Column3";
 			// 
 			// Column4
 			// 
-			Column4.HeaderText = "Height";
+			Column4.HeaderText = "Date";
 			Column4.Name = "Column4";
 			// 
-			// Column5
-			// 
-			Column5.HeaderText = "Weight";
-			Column5.Name = "Column5";
-			// 
-			// dlgEditPatients
+			// dlgEditQuestionnaires
 			// 
 			AcceptButton = btnOK;
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(769, 345);
+			ClientSize = new Size(775, 381);
 			Controls.Add(btnDel);
 			Controls.Add(btnEdit);
 			Controls.Add(btnAdd);
-			Controls.Add(gridPatients);
+			Controls.Add(gridQstneers);
 			Controls.Add(btnCancel);
 			Controls.Add(btnOK);
 			MaximizeBox = false;
 			MinimizeBox = false;
-			Name = "dlgEditPatients";
+			Name = "dlgEditQuestionnaires";
 			ShowInTaskbar = false;
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "Patients Details";
-			((System.ComponentModel.ISupportInitialize)gridPatients).EndInit();
+			Text = "EditQuestionnaires";
+			((System.ComponentModel.ISupportInitialize)gridQstneers).EndInit();
 			ResumeLayout(false);
 		}
 
 		#endregion
 
+		private Button btnCancel;
+		private Button btnOK;
 		private Button btnDel;
 		private Button btnEdit;
 		private Button btnAdd;
-		private DataGridView gridPatients;
-		private Button btnCancel;
-		private Button btnOK;
+		private DataGridView gridQstneers;
 		private DataGridViewTextBoxColumn Column1;
 		private DataGridViewTextBoxColumn Column2;
 		private DataGridViewTextBoxColumn Column3;
 		private DataGridViewTextBoxColumn Column4;
-		private DataGridViewTextBoxColumn Column5;
 	}
 }

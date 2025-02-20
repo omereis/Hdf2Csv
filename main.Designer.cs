@@ -45,6 +45,7 @@
 			popupInformation = new ToolStripMenuItem();
 			miUsers = new ToolStripMenuItem();
 			miPatients = new ToolStripMenuItem();
+			miQuestionnaires = new ToolStripMenuItem();
 			popupHelp = new ToolStripMenuItem();
 			miAbout = new ToolStripMenuItem();
 			status_bar = new StatusStrip();
@@ -166,7 +167,7 @@
 			// 
 			// popupInformation
 			// 
-			popupInformation.DropDownItems.AddRange(new ToolStripItem[] { miUsers, miPatients });
+			popupInformation.DropDownItems.AddRange(new ToolStripItem[] { miUsers, miPatients, miQuestionnaires });
 			popupInformation.Name = "popupInformation";
 			popupInformation.Size = new Size(82, 20);
 			popupInformation.Text = "&Information";
@@ -174,16 +175,23 @@
 			// miUsers
 			// 
 			miUsers.Name = "miUsers";
-			miUsers.Size = new Size(125, 22);
+			miUsers.Size = new Size(180, 22);
 			miUsers.Text = "&Users...";
 			miUsers.Click += miUsers_Click;
 			// 
 			// miPatients
 			// 
 			miPatients.Name = "miPatients";
-			miPatients.Size = new Size(125, 22);
+			miPatients.Size = new Size(180, 22);
 			miPatients.Text = "&Patients...";
 			miPatients.Click += miPatients_Click;
+			// 
+			// miQuestionnaires
+			// 
+			miQuestionnaires.Name = "miQuestionnaires";
+			miQuestionnaires.Size = new Size(180, 22);
+			miQuestionnaires.Text = "Questionnaires";
+			miQuestionnaires.Click += miQuestionnaires_Click;
 			// 
 			// popupHelp
 			// 
@@ -294,5 +302,6 @@
 		private Button btnConnect;
 		private Button button1;
 		private TextBox textBox1;
+		private ToolStripMenuItem miQuestionnaires;
 	}
 }

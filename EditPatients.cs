@@ -52,7 +52,6 @@ namespace Hdf2Csv {
 			gridPatients.Rows[nRow].Cells[2].Value = patient.GetGenderName();
 			gridPatients.Rows[nRow].Cells[3].Value = patient.GetHeight();//Height.ToString();
 			gridPatients.Rows[nRow].Cells[4].Value = patient.GetWeight();
-			gridPatients.Rows[nRow].Cells[5].Value = patient.FuglMeyerScale();
 		}
 //-----------------------------------------------------------------------------
 		private void btnAdd_Click(object sender, EventArgs e) {
