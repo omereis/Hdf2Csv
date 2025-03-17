@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\..\Common\DBParams.cs" Link="DBParams.cs" />
+    <Compile Include="..\..\..\Common\HtmlMisc.cs" Link="HtmlMisc.cs" />
     <Compile Include="..\..\..\Common\IniFile.cs" Link="IniFile.cs" />
     <Compile Include="..\..\..\Common\Misc.cs" Link="Misc.cs" />
   </ItemGroup>

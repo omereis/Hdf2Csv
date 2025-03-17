@@ -1,10 +1,8 @@
 ﻿/*****************************************************************************\
-|                            QuestionairInfo.cs                               |
+|                              ProtocolInfo.cs                                |
 \*****************************************************************************/
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.VisualBasic.ApplicationServices;
-using MySql.Data.MySqlClient;
-using OmerEisCommon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,21 +13,27 @@ using static Mysqlx.Expect.Open.Types.Condition.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 //-----------------------------------------------------------------------------
+using MySql.Data.MySqlClient;
+using OmerEisCommon;
+using System.IO;
+//-----------------------------------------------------------------------------
 namespace Hdf2Csv {
-	public class TQuestionairInfo {
+	public class TProtocolInfo {
 		private int m_id;
 		private string m_strName;
 		private string m_strDescription;
+		private TProtocolSection[] m_aSections;
 //-----------------------------------------------------------------------------
 		public int ID {get{return (m_id);}set{m_id=value;}}
 		public string Name {get{return (m_strName);}set{m_strName=value;}}
 		public string Description {get{return (m_strDescription);}set{m_strDescription=value;}}
+		public TProtocolSection[] Sections {get{return(m_aSections);}set{m_aSections=value;}}
 //-----------------------------------------------------------------------------
-		public TQuestionairInfo () {
+		public TProtocolInfo () {
 			Clear();
 		}
 //-----------------------------------------------------------------------------
-		public TQuestionairInfo (TQuestionairInfo other) {
+		public TProtocolInfo (TProtocolInfo other) {
 			AssignAll (other);
 		}
 //-----------------------------------------------------------------------------
@@ -37,29 +41,31 @@ namespace Hdf2Csv {
 			ID = 0;
 			Name = "";
 			Description = "";
+			Sections = null;
 		}
 //-----------------------------------------------------------------------------
-		public void AssignAll (TQuestionairInfo other) {
+		public void AssignAll (TProtocolInfo other) {
 			ID = other.ID;
 			Name = other.Name;
 			Description = other.Description;
+			Sections = (other.Sections == null ? null : (TProtocolSection[]) other.Sections.Clone());
 		}
 //-----------------------------------------------------------------------------
-		public static bool LoadFromDB (MySqlCommand cmd, ref TQuestionairInfo[] aQuestionairs, ref string strErr) {
+		public static bool LoadFromDB (MySqlCommand cmd, ref TProtocolInfo[] aProtocols, ref string strErr) {
 			ArrayList aList = new ArrayList ();
-			bool f = TQuestionairInfoDB.LoadFromDB (cmd, aList, ref strErr);
+			bool f = TProtocolInfoDB.LoadFromDB (cmd, aList, ref strErr);
 			if (f) {
 				if (aList.Count > 0) {
-					aQuestionairs = new TQuestionairInfo[aList.Count];
+					aProtocols = new TProtocolInfo[aList.Count];
 					for (int n=0 ; n < aList.Count ; n++)
-						aQuestionairs[n] = (TQuestionairInfo) aList[n];
+						aProtocols[n] = (TProtocolInfo) aList[n];
 				}
 			}
 			return (f);
 		}
 //-----------------------------------------------------------------------------
 		public bool InsertAsNew (MySqlCommand cmd, ref string strErr) {
-			TQuestionairInfoDB qdb = new TQuestionairInfoDB();
+			TProtocolInfoDB qdb = new TProtocolInfoDB();
 			bool f= qdb.InsertAsNew (cmd, ref strErr);
 			if (f)
 				AssignAll (qdb);
@@ -67,13 +73,39 @@ namespace Hdf2Csv {
 		}
 //-----------------------------------------------------------------------------
 		public bool DeleteFromDB (MySqlCommand cmd, ref string strErr) {
-			TQuestionairInfoDB qdb = new TQuestionairInfoDB();
+			TProtocolInfoDB qdb = new TProtocolInfoDB();
 			return (qdb.DeleteFromDB (cmd, ID, ref strErr));
 		}
 //-----------------------------------------------------------------------------
 		public bool UpdateInDB (MySqlCommand cmd, ref string strErr) {
-			TQuestionairInfoDB qdb = new TQuestionairInfoDB(this);
+			TProtocolInfoDB qdb = new TProtocolInfoDB(this);
 			return (qdb.UpdateInDB (cmd, ref strErr));
+		}
+//-----------------------------------------------------------------------------
+		public string ToHtml () {
+			string strHtml = THtmlMisc.FormatHeading (EHtmlHeading.H2, Name);
+			strHtml += THtmlMisc.FormatDiv (Description);
+			strHtml = THtmlMisc.FormatPage (strHtml);
+			//strHtml += OmerEisCommon.THtmlMisc.
+			//THtmlMisc.FormatHeading 
+			//FormatHeader (H1,this.Name);
+			return (strHtml);
+		}
+//-----------------------------------------------------------------------------
+		public int SectionsCount() {
+			int nCount = 0;
+
+			if (Sections != null)
+				nCount = Sections.Length;
+			return (nCount);
+		}
+//-----------------------------------------------------------------------------
+		public bool LoadFromDB (MySqlCommand cmd, ref string strErr) {
+			bool fLoad;
+			TProtocolInfoDB protocol_db = new TProtocolInfoDB(this);
+			if ((fLoad = protocol_db.LoadFromDB (cmd, ID, ref strErr)) == true)
+				AssignAll (protocol_db);
+			return (fLoad);
 		}
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
@@ -81,31 +113,31 @@ namespace Hdf2Csv {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //-----------------------------------------------------------------------------
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	internal class TQuestionairInfoDB : TQuestionairInfo {
-		private static readonly string Table   = "tblQstnrs";
-		private static readonly string FldID   = "qnr_id";
-		private static readonly string FldName = "qnr_name";
-		private static readonly string FldDesc = "qnr_desc";
+	internal class TProtocolInfoDB : TProtocolInfo {
+		private static readonly string Table   = "tblProtocols";
+		public static readonly string FldID   = "protocol_id";
+		private static readonly string FldName = "protocol_name";
+		private static readonly string FldDesc = "protocol_desc";
 //-----------------------------------------------------------------------------
-		public TQuestionairInfoDB () : base () {}
+		public TProtocolInfoDB () : base () {}
 //-----------------------------------------------------------------------------
-		public TQuestionairInfoDB (TQuestionairInfo other) : base (other) {}
+		public TProtocolInfoDB (TProtocolInfo other) : base (other) {}
 //-----------------------------------------------------------------------------
-		public TQuestionairInfoDB (TQuestionairInfoDB other) : base (other) {}
+		public TProtocolInfoDB (TProtocolInfoDB other) : base (other) {}
 //-----------------------------------------------------------------------------
-		public static bool LoadFromDB (MySqlCommand cmd, ArrayList aQuestionairs, ref string strErr) {
+		public static bool LoadFromDB (MySqlCommand cmd, ArrayList aProtocols, ref string strErr) {
 			bool f = false;
 			MySqlDataReader reader = null;
 
 			try {
-				TQuestionairInfoDB qdb = new TQuestionairInfoDB ();
-				aQuestionairs.Clear ();
+				TProtocolInfoDB qdb = new TProtocolInfoDB ();
+				aProtocols.Clear ();
 				cmd.CommandText = String.Format ("select * from {0};", Table);
 				reader = cmd.ExecuteReader ();
 				f = true;
 				while ((f) && (reader.Read())) {
 					if ((f = qdb.LoadFromReader (reader, ref strErr)) == true)
-						aQuestionairs.Add (new TQuestionairInfo (qdb));
+						aProtocols.Add (new TProtocolInfo (qdb));
 				}
 			}
 			catch (Exception ex) {
@@ -126,7 +158,7 @@ namespace Hdf2Csv {
 				Clear();
 				ID = TMisc.ReadIntField (reader, FldID);
 				Name = TMisc.ReadTextField (reader, FldName, ref strErr);
-				Description = TMisc.ReadTextField (reader, FldName, ref strErr);
+				Description = TMisc.ReadTextField (reader, FldDesc, ref strErr);
 				f = true;
 			}
 			catch (Exception ex) {
@@ -185,6 +217,44 @@ namespace Hdf2Csv {
 				strErr = ex.Message;
 			}
 			return (f);
+		}
+//-----------------------------------------------------------------------------
+		public bool LoadFromDB (MySqlCommand cmd, int id, ref string strErr) {
+			bool fLoad=false;
+			MySqlDataReader reader = null;
+
+			try {
+				cmd.CommandText = String.Format ("select * from {0} where {1}={2};", Table, FldID, id);
+				reader = cmd.ExecuteReader ();
+				if (reader.Read ()) {
+					if (LoadFromReader (reader, ref strErr)) {
+						fLoad = LoadSectionsTasks (cmd, ref strErr);
+					}
+				}
+				fLoad = true;
+			}
+			catch (Exception ex) {
+				strErr = ex.Message;
+				fLoad = false;
+			}
+			finally {
+				if (reader != null)
+					reader.Close ();
+			}
+			return (fLoad);
+		}
+//-----------------------------------------------------------------------------
+		public bool LoadSectionsTasks (MySqlCommand cmd, ref string strErr) {
+			TProtocolSection[] aSections=null;
+			bool fLoad;
+
+			if ((fLoad = TProtocolSection.LoadFromDB (cmd, ID, ref aSections, ref strErr)) == true) {
+				if (aSections != null)
+					Sections = (TProtocolSection[]) aSections.Clone();
+				else
+					Sections = null;
+			}
+			return (fLoad);
 		}
 //-----------------------------------------------------------------------------
 	}

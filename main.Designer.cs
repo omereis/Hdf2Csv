@@ -45,7 +45,7 @@
 			popupInformation = new ToolStripMenuItem();
 			miUsers = new ToolStripMenuItem();
 			miPatients = new ToolStripMenuItem();
-			miQuestionnaires = new ToolStripMenuItem();
+			miProtocols = new ToolStripMenuItem();
 			popupHelp = new ToolStripMenuItem();
 			miAbout = new ToolStripMenuItem();
 			status_bar = new StatusStrip();
@@ -132,42 +132,42 @@
 			// loginToolStripMenuItem
 			// 
 			loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-			loginToolStripMenuItem.Size = new Size(131, 22);
+			loginToolStripMenuItem.Size = new Size(180, 22);
 			loginToolStripMenuItem.Text = "Login...";
 			// 
 			// logoutToolStripMenuItem
 			// 
 			logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-			logoutToolStripMenuItem.Size = new Size(131, 22);
+			logoutToolStripMenuItem.Size = new Size(180, 22);
 			logoutToolStripMenuItem.Text = "Logout...";
 			// 
 			// miSep2
 			// 
 			miSep2.Name = "miSep2";
-			miSep2.Size = new Size(128, 6);
+			miSep2.Size = new Size(177, 6);
 			// 
 			// miDatabase
 			// 
 			miDatabase.Name = "miDatabase";
-			miDatabase.Size = new Size(131, 22);
+			miDatabase.Size = new Size(180, 22);
 			miDatabase.Text = "Database...";
 			miDatabase.Click += miDatabase_Click;
 			// 
 			// miSep1
 			// 
 			miSep1.Name = "miSep1";
-			miSep1.Size = new Size(128, 6);
+			miSep1.Size = new Size(177, 6);
 			// 
 			// miExit
 			// 
 			miExit.Name = "miExit";
-			miExit.Size = new Size(131, 22);
+			miExit.Size = new Size(180, 22);
 			miExit.Text = "E&xit";
 			miExit.Click += miExit_Click;
 			// 
 			// popupInformation
 			// 
-			popupInformation.DropDownItems.AddRange(new ToolStripItem[] { miUsers, miPatients, miQuestionnaires });
+			popupInformation.DropDownItems.AddRange(new ToolStripItem[] { miUsers, miPatients, miProtocols });
 			popupInformation.Name = "popupInformation";
 			popupInformation.Size = new Size(82, 20);
 			popupInformation.Text = "&Information";
@@ -175,23 +175,23 @@
 			// miUsers
 			// 
 			miUsers.Name = "miUsers";
-			miUsers.Size = new Size(180, 22);
+			miUsers.Size = new Size(228, 22);
 			miUsers.Text = "&Users...";
 			miUsers.Click += miUsers_Click;
 			// 
 			// miPatients
 			// 
 			miPatients.Name = "miPatients";
-			miPatients.Size = new Size(180, 22);
+			miPatients.Size = new Size(228, 22);
 			miPatients.Text = "&Patients...";
 			miPatients.Click += miPatients_Click;
 			// 
-			// miQuestionnaires
+			// miProtocols
 			// 
-			miQuestionnaires.Name = "miQuestionnaires";
-			miQuestionnaires.Size = new Size(180, 22);
-			miQuestionnaires.Text = "Questionnaires";
-			miQuestionnaires.Click += miQuestionnaires_Click;
+			miProtocols.Name = "miProtocols";
+			miProtocols.Size = new Size(228, 22);
+			miProtocols.Text = "Protocols && Questionnaires...";
+			miProtocols.Click += miProtocols_Click;
 			// 
 			// popupHelp
 			// 
@@ -302,6 +302,6 @@
 		private Button btnConnect;
 		private Button button1;
 		private TextBox textBox1;
-		private ToolStripMenuItem miQuestionnaires;
+		private ToolStripMenuItem miProtocols;
 	}
 }

@@ -15,7 +15,7 @@ using OmerEisGlobal;
 namespace Hdf2Csv
 {
 	public partial class frmMain : Form {
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private MySqlConnection m_database;
 		private MySqlCommand m_cmd;
 		private string m_strErr = "";
@@ -25,7 +25,7 @@ namespace Hdf2Csv
 			m_database = null;
 			m_cmd = null;
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void btnBrowse_Click(object sender, EventArgs e) {
 			if(dlgOpenHDF5.ShowDialog() == DialogResult.OK) {
 				gridFiles.Rows.Clear();
@@ -36,7 +36,7 @@ namespace Hdf2Csv
 				}
 			}
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void btnParse_Click(object sender, EventArgs e) {
 			try {
 				ConnectToDB();
@@ -44,7 +44,7 @@ namespace Hdf2Csv
 				Console.WriteLine(ex.Message);
 			}
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miExit_Click(object sender, EventArgs e) {
 			Close();
 		}
@@ -57,12 +57,12 @@ namespace Hdf2Csv
 					fOpen = true;
 			return (fOpen);
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
 			miUsers.Enabled = IsDatabaseConnected(m_database);
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
 			string str = "";
 			if(m_database == null)
@@ -74,19 +74,19 @@ namespace Hdf2Csv
 				str = "Disconnected";
 			status_bar.Items[0].Text = m_strTitle + str;
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void frmMain_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
 			m_strTitle = status_bar.Items[0].Text;
 			ConnectToDB();
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void frmMain_FormClosed(object sender, FormClosedEventArgs e) {
 			Application.Idle -= OnIdle;
 			if(m_database != null)
 				m_database.Close();
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miDatabase_Click(object sender, EventArgs e) {
 			bool fParams = false;
 			TDBParams db_params = new TDBParams();
@@ -137,30 +137,30 @@ namespace Hdf2Csv
 				}
 			}
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miUsers_Click(object sender, EventArgs e) {
 			dlgUsers users = new dlgUsers();
 			users.Execute(m_cmd);
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void btnConnect_Click(object sender, EventArgs e) {
 			ConnectToDB();
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miPatients_Click(object sender, EventArgs e) {
 			dlgEditPatients dlg = new dlgEditPatients();
 			dlg.Execute(m_cmd);
 		}
-
+//-----------------------------------------------------------------------------
 		private void button1_Click(object sender, EventArgs e) {
 			string str = TPatientInfo.GetRandomPatientCode();
 			textBox1.Text = str;
 		}
-
-		private void miQuestionnaires_Click(object sender, EventArgs e) {
-			dlgEditQuestionnaires dlg = new dlgEditQuestionnaires();
+//-----------------------------------------------------------------------------
+		private void miProtocols_Click(object sender, EventArgs e) {
+			dlgEditProtocols dlg = new dlgEditProtocols();
 			dlg.Execute (m_cmd);
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 	}
 }

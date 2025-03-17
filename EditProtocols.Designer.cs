@@ -1,5 +1,5 @@
 ﻿namespace Hdf2Csv {
-	partial class dlgEditQuestionnaires {
+	partial class dlgEditProtocols {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -28,12 +28,12 @@
 			btnDel = new Button();
 			btnEdit = new Button();
 			btnAdd = new Button();
-			gridQstneers = new DataGridView();
+			gridProtocols = new DataGridView();
 			Column1 = new DataGridViewTextBoxColumn();
 			Column2 = new DataGridViewTextBoxColumn();
 			Column3 = new DataGridViewTextBoxColumn();
 			Column4 = new DataGridViewTextBoxColumn();
-			((System.ComponentModel.ISupportInitialize)gridQstneers).BeginInit();
+			((System.ComponentModel.ISupportInitialize)gridProtocols).BeginInit();
 			SuspendLayout();
 			// 
 			// btnCancel
@@ -84,20 +84,20 @@
 			btnAdd.UseVisualStyleBackColor = true;
 			btnAdd.Click += btnAdd_Click;
 			// 
-			// gridQstneers
+			// gridProtocols
 			// 
-			gridQstneers.AllowUserToAddRows = false;
-			gridQstneers.AllowUserToDeleteRows = false;
-			gridQstneers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			gridQstneers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-			gridQstneers.EditMode = DataGridViewEditMode.EditProgrammatically;
-			gridQstneers.Location = new Point(94, 24);
-			gridQstneers.MultiSelect = false;
-			gridQstneers.Name = "gridQstneers";
-			gridQstneers.RowHeadersVisible = false;
-			gridQstneers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			gridQstneers.Size = new Size(620, 277);
-			gridQstneers.TabIndex = 12;
+			gridProtocols.AllowUserToAddRows = false;
+			gridProtocols.AllowUserToDeleteRows = false;
+			gridProtocols.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			gridProtocols.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+			gridProtocols.EditMode = DataGridViewEditMode.EditProgrammatically;
+			gridProtocols.Location = new Point(94, 24);
+			gridProtocols.MultiSelect = false;
+			gridProtocols.Name = "gridProtocols";
+			gridProtocols.RowHeadersVisible = false;
+			gridProtocols.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			gridProtocols.Size = new Size(620, 277);
+			gridProtocols.TabIndex = 12;
 			// 
 			// Column1
 			// 
@@ -120,7 +120,7 @@
 			Column4.HeaderText = "Date";
 			Column4.Name = "Column4";
 			// 
-			// dlgEditQuestionnaires
+			// dlgEditProtocols
 			// 
 			AcceptButton = btnOK;
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -130,16 +130,16 @@
 			Controls.Add(btnDel);
 			Controls.Add(btnEdit);
 			Controls.Add(btnAdd);
-			Controls.Add(gridQstneers);
+			Controls.Add(gridProtocols);
 			Controls.Add(btnCancel);
 			Controls.Add(btnOK);
 			MaximizeBox = false;
 			MinimizeBox = false;
-			Name = "dlgEditQuestionnaires";
+			Name = "dlgEditProtocols";
 			ShowInTaskbar = false;
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "EditQuestionnaires";
-			((System.ComponentModel.ISupportInitialize)gridQstneers).EndInit();
+			Text = "Protocols & Questionnaires";
+			((System.ComponentModel.ISupportInitialize)gridProtocols).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -150,7 +150,7 @@
 		private Button btnDel;
 		private Button btnEdit;
 		private Button btnAdd;
-		private DataGridView gridQstneers;
+		private DataGridView gridProtocols;
 		private DataGridViewTextBoxColumn Column1;
 		private DataGridViewTextBoxColumn Column2;
 		private DataGridViewTextBoxColumn Column3;
